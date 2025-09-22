@@ -28,7 +28,7 @@ export default function ChoosePokemon() {
             <section className="flex gap-4">
                 {pokemons.map((pokemon) =>
                     <div className="flex flex-col gap-4" key={pokemon.id}>
-                        <div className="card bg-white text-black rounded-lg">
+                        <div className="card bg-white text-black rounded-lg p-4">
                             <p>{pokemon.name}</p>
                         </div>
 
