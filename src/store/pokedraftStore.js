@@ -8,15 +8,23 @@ const usePokedraft = create((set) => ({
         pokemons: [],
     },
 
+    pokedex: [],
+
 
     // Actions
     pickPokemon: ({pokemonId}) =>
-        set((state) => ({
-            game: {
-                ...state.game,
-                pokemons: [...state.game.pokemons, pokemonId],
-            },
-        })),
+        set((state) => {
+
+            const pokemon = state.pokedex.find(pokemon => pokemon.id === pokemonId);
+
+            return {
+                ...state,
+                game: {
+                    ...state.game,
+                    pokemons: [...state.game.pokemons, pokemon],
+                }
+            }
+        }),
 }));
 
 export default usePokedraft;

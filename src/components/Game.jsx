@@ -11,17 +11,19 @@ export default function Game() {
 
     return (
         <>
-            <section className="flex justify-between">
+            <section className="flex justify-between h-screen items-center">
                 <section>
+                    <p>Équipe</p>
                     {pokemons.map((pokemon) => (
                         <>
                             <p key={pokemon}>{pokemon}</p>
                         </>
                     ))}
                 </section>
-                <section>
+                <section className="flex justify-center items-center">
                     {screen === "choose_pokemon" ? <ChoosePokemon /> : null}
                 </section>
+                <section></section>
             </section>
         </>
     )

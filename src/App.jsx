@@ -5,9 +5,6 @@ function App() {
 
   return (
     <>
-      <header>
-          <h1>Pokédraft</h1>
-      </header>
         <main className="w-full">
             <Game></Game>
         </main>
