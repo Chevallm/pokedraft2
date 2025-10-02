@@ -1,7 +1,8 @@
 export const PokedraftApi = {
 
-    async getRandomPokemon(quantity = 1) {
-        const response = await fetch('http://localhost:3000/dex/pokemons/random?quantity=' + quantity)
+    async getRandomPokemon(params) {
+        const urlSearchParams = new URLSearchParams(params);
+        const response = await fetch(`http://localhost:3050/dex/pokemons/random?${urlSearchParams.toString()}`);
         return (await response).json();
     }
 }

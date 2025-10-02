@@ -14,7 +14,7 @@ export default function KiviatRadar({
                                         stats,
                                         selectStat,
                                         size = 450,
-                                        maxValue = 31,
+                                        maxValue = 255,
                                         levels = 6,
                                         className = "",
                                         gradientFrom = "#0ea5e9",
@@ -25,15 +25,15 @@ export default function KiviatRadar({
     const cy = size / 2;
     const radius = Math.max(24, (size / 2) - padding);
 
-    const axes = useMemo(() => ["hp", "att", "def", "spAtt", "spDef", "speed"], []);
+    const axes = useMemo(() => ["hp", "atk", "def", "spa", "spd", "spe"], []);
 
     const values = useMemo(() => [
         stats.hp.value ?? 0,
-        stats.attack.value ?? 0,
-        stats.defense.value ?? 0,
-        stats.spAttack.value ?? 0,
-        stats.spDefense.value ?? 0,
-        stats.speed.value ?? 0,
+        stats.atk.value ?? 0,
+        stats.def.value ?? 0,
+        stats.spa.value ?? 0,
+        stats.spd.value ?? 0,
+        stats.spe.value ?? 0,
     ], [stats]);
 
     const count = axes.length;
@@ -65,11 +65,11 @@ export default function KiviatRadar({
         const ly = cy + labelRadius * Math.sin(angle);
         const display = {
             hp: "HP",
-            att: "Attack",
-            def: "Defense",
-            spAtt: "Special Attack",
-            spDef: "Special Defense",
-            speed: "Speed",
+            atk: "ATK",
+            def: "DEF",
+            spa: "SPA",
+            spd: "SPD",
+            spe: "SPE",
         };
         return {
             label: display[label] ?? label,
@@ -151,7 +151,7 @@ export default function KiviatRadar({
                     {/* small nodes on vertices */}
                     {values.map((v, i) => {
                         const [x, y] = pointAt(v, i);
-                        return <circle key={i} cx={x} cy={y} r={4} fill="#fff" stroke={gradientFrom}
+                        return <circle key={i} cx={x} cy={y} r={2} fill="#fff" stroke={gradientFrom}
                                        strokeWidth={1.5}/>;
                     })}
                 </g>
