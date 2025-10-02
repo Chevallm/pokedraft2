@@ -4,18 +4,15 @@ const usePokedraft = create((set) => ({
 
     // State
     screen: "choose_pokemon",
+    screenData: undefined,
     game: {
         pokemons: [],
     },
 
-    pokedex: [],
-
 
     // Actions
-    pickPokemon: ({pokemonId}) =>
+    pickPokemon: (pokemon) =>
         set((state) => {
-
-            const pokemon = state.pokedex.find(pokemon => pokemon.id === pokemonId);
 
             return {
                 ...state,
@@ -24,7 +21,16 @@ const usePokedraft = create((set) => ({
                     pokemons: [...state.game.pokemons, pokemon],
                 }
             }
-        }),
+    }),
+
+    setScreen: (screen, pokemon) =>
+        set((state) => {
+            return {
+                ...state,
+                screen: screen,
+                screenData: pokemon,
+            }
+        })
 }));
 
 export default usePokedraft;
